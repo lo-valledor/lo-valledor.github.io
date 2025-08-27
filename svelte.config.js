@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -8,17 +8,12 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-static is required for GitHub Pages deployment
+		// adapter-vercel optimized for Vercel deployment
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: '404.html',
-			precompress: false,
-			strict: true
-		}),
-		paths: {
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-		}
+			// Optional: configure Vercel-specific options
+			runtime: 'nodejs20.x'
+		})
+		// Remove paths.base since Vercel handles routing automatically
 	}
 };
 

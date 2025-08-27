@@ -1,10 +1,9 @@
 <script>
 	import Timer from "$lib/components/Timer.svelte";
-	import { base } from '$app/paths';
 </script>
 
 <main class="container">
-	<img src="{base}/logo.svg" alt="Logo" class="logo" />
+	<img src="/logo.svg" alt="Logo" class="logo" />
 	<Timer />
 </main>
 

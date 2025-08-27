@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { base } from '$app/paths';
 
 	let { children } = $props();
 </script>
@@ -11,7 +10,7 @@
 	<title>Countdown Timer</title>
 </svelte:head>
 
-<main class="app-container" style="--bg-image: url('{base}/fondo.webp')">
+<main class="app-container" style="--bg-image: url('/fondo.webp')">
 	{@render children?.()}
 </main>
 
