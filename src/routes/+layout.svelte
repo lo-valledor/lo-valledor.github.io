@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { base } from '$app/paths';
 
 	let { children } = $props();
 </script>
@@ -10,7 +11,7 @@
 	<title>Countdown Timer</title>
 </svelte:head>
 
-<main class="app-container">
+<main class="app-container" style="--bg-image: url('{base}/fondo.webp')">
 	{@render children?.()}
 </main>
 
@@ -22,16 +23,22 @@
 		overflow-x: hidden;
 	}
 
-	:global(body) {
-		background-image: url('/fondo.webp');
+	.app-container {
+		background-image: var(--bg-image);
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		z-index: 1;
 	}
 
-	:global(body::before) {
+	.app-container::before {
 		content: '';
 		position: fixed;
 		top: 0;
@@ -40,15 +47,5 @@
 		height: 100%;
 		background: rgba(0, 0, 0, 0.4);
 		z-index: -1;
-	}
-
-	.app-container {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		z-index: 1;
 	}
 </style>
